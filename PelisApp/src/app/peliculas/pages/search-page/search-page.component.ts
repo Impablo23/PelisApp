@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Result } from 'src/app/interfaces/result.interface';
 import { PeliculaService } from 'src/app/services/peliculas.service';
 
@@ -17,7 +18,7 @@ export class SearchPageComponent {
   public peliculas: Result[] = this.peliculasService.listadoMovies
 
 
-  constructor(private peliculasService: PeliculaService){}
+  constructor(private peliculasService: PeliculaService, private snackbar: MatSnackBar){}
 
 
   public searchPelicula(){
@@ -42,6 +43,9 @@ export class SearchPageComponent {
         this.peliculasService.listadoMovies = respuesta.results;
         this.peliculas= this.peliculasService.listadoMovies
         console.log(this.peliculasService.listadoMovies)
+        if(this.peliculasService.listadoMovies.length === 0) {
+          this.snackbar.open("No se han encontrado resultados de "+busqueda, "Cerrar",{duration: 2000,panelClass:['background']})
+        }
       },
       (error) => {
         console.error('Error en la solicitud HTTP:', error);

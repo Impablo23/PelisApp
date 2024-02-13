@@ -1,5 +1,5 @@
 <mat-card>
-  <img mat-card-image [src]="'https://image.tmdb.org/t/p/w500' + pelicula.poster_path" [alt]="pelicula.title" (click)="navigateToMovie(pelicula.id)">
+  <img mat-card-image [src]="('https://image.tmdb.org/t/p/w500' + pelicula.poster_path)" [alt]="pelicula.title" (click)="navigateToMovie(pelicula.id)">
   <mat-card-title style="text-align: center;font-size: 10px; background: linear-gradient(to bottom right, red, black);">{{pelicula.title}}</mat-card-title>
   <mat-divider></mat-divider>
 </mat-card>

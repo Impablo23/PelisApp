@@ -57,7 +57,7 @@ body {
 }
 
 .movie__title {
-  display: flex;
+  /* display: flex; */
   align-items: center;
   margin-bottom: 20px;
 }
@@ -73,18 +73,19 @@ body {
 }
 
 .movie__tag {
-    font-size: 10px;
-    color: #fff;
+  font-size: 10px;
+  color: #fff;
   padding: 2px 7px;
   border-radius: 100px;
   margin-right: 8px;
-  display: block;
+  margin-bottom: 5px;
+  float: left;
   text-transform: uppercase;
 
 }
 
 .movie__tag--1 {
-  background-color: #A9C9FF;
+  background-color: #ff0000;
 }
 
 .movie__tag--2 {
@@ -95,9 +96,8 @@ body {
     font-size: 14px;
 }
 
-.movie__details {
-    display: flex;
-    margin: auto;
+.movie__details{
+  margin-top: 20px;
 }
 
 .movie__detail {
@@ -122,4 +122,19 @@ body {
 .icons-yellow {
     color: rgb(190, 190, 71);
 
+}
+
+#contenedor{
+  width: 1100px;
+  height: 700px;
+  border-radius: 30px;
+  margin: auto;
+  padding: 20px;
+
+}
+
+.datos{
+  font-weight: bold;
+  font-size: 15px;
+  margin-left: 15px;
 }

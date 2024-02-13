@@ -9,6 +9,7 @@ import { PeliculaPageComponent } from './pages/pelicula-page/pelicula-page.compo
 import { ReactiveFormsModule } from '@angular/forms';
 import { CardComponent } from './components/card/card.component';
 import { DetailCardComponent } from './components/detail-card/detail-card.component';
+import { PeliPipe } from './pipes/pelicula-image.pipe';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { DetailCardComponent } from './components/detail-card/detail-card.compon
     SearchPageComponent,
     PeliculaPageComponent,
     CardComponent,
-    DetailCardComponent
+    DetailCardComponent,
+    PeliPipe
   ],
   imports: [
     CommonModule,
