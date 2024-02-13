@@ -1,0 +1,12 @@
+<div class="flex flex-column p-2">
+  <form [formGroup]="searchForm">
+    <mat-form-field style="width: 40%; color: red;">
+      <mat-label>Buscador de Pel&iacute;culas</mat-label>
+      <input type="text" matInput  (keyup.enter)="searchPelicula()" formControlName="searchInput">
+    </mat-form-field>
+  </form>
+  <div class="grid mb-8">
+    <div *ngFor="let pelicula of peliculas" class="col-12 sm.col-4 md:col-3 xl:col-2" ><app-card [pelicula]="pelicula"></app-card></div>
+  </div>
+
+</div>
