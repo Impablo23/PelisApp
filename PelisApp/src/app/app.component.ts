@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'PelisApp';
+
+  public sidebarItems = [
+    {label: 'Buscar', icon: 'search', url: '/peliculas'},
+    {label: 'Gestion de Usuarios', icon: 'groups', url: '/users'}
+  ]
 }

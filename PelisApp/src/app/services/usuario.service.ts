@@ -8,7 +8,7 @@ import { environments } from '../environments/environments';
 
 const ENDPOINT = 'usuario';
 
-const url : string = environments.baseUrl;
+const urlSGE : string = environments.baseUrl;
 
 @Injectable({
   providedIn: 'root'
@@ -23,12 +23,12 @@ export class UsuarioService {
   }
 
   getAllUsuarios() {
-    return this.http.get<ApiResponse>(`${url}/${ENDPOINT}.php`, { headers: this.commonService.headers });
+    return this.http.get<ApiResponse>(`${urlSGE}/${ENDPOINT}.php`, { headers: this.commonService.headers });
   }
 
   addUsuario(usuario: Usuario) {
     const body = JSON.stringify(usuario);
-    return this.http.post<ApiResponse>(`${url}/${ENDPOINT}.php`, body, {headers: this.commonService.headers });
+    return this.http.post<ApiResponse>(`${urlSGE}/${ENDPOINT}.php`, body, {headers: this.commonService.headers });
   }
 
   editUsuario(usuario: Usuario, route?: string) {
@@ -40,11 +40,11 @@ export class UsuarioService {
       route = '';
     }
 
-    return this.http.put<ApiResponse>(`${url}/${ENDPOINT}.php${route}`, body, { headers: this.commonService.headers });
+    return this.http.put<ApiResponse>(`${urlSGE}/${ENDPOINT}.php${route}`, body, { headers: this.commonService.headers });
   }
 
   deleteUsuario(usuario: Usuario) {
-    return this.http.delete<ApiResponse>(`${url}/${ENDPOINT}.php?id=${usuario.id_usuario}`, { headers: this.commonService.headers });
+    return this.http.delete<ApiResponse>(`${urlSGE}/${ENDPOINT}.php?id=${usuario.id_usuario}`, { headers: this.commonService.headers });
   }
 
   removeUsuario(idUser: number) {

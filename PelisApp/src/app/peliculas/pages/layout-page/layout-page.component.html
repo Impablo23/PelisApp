@@ -23,8 +23,8 @@
   <mat-toolbar style="background-color: red;">
     <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
     <span class="spacer"></span>
-    <p style="margin-top: 14px;margin-right: 30px;font-size: 15px;">Nombre User</p>
-    <button mat-button>Logout</button>
+    <p style="margin-top: 14px;margin-right: 30px;font-size: 15px;">{{nombre_publico}}</p>
+    <button mat-button (click)="salir()">Logout</button>
   </mat-toolbar>
 
   <div class="container p-2">

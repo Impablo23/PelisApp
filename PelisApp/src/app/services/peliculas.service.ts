@@ -20,24 +20,19 @@ export class PeliculaService {
 
   private bearer_token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4NDM3NGY0MGIzM2NjYzdlZjM1Yzk4ZjEyZmU0ZWE4OCIsInN1YiI6IjY1YzNjNTQ2OTVhY2YwMDE4MzFkM2NiZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lK_wNjuzms8uAHiSB758XmHZKehwYGj3Qlc5fZswCSY";
 
+  private headers = new HttpHeaders({
+    'Authorization': `Bearer ${this.bearer_token}`,
+    'Content-Type': 'application/json'
+  });
+
   constructor(private http: HttpClient) { }
 
   getFilmByName(name: string): Observable<Root> {
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.bearer_token}`,
-      'Content-Type': 'application/json'
-    });
-
-    return this.http.get<Root>(`${this.baseUrlApi}search/movie?query=${name}&language=es-ES&page=1`, { headers: headers });
+    return this.http.get<Root>(`${this.baseUrlApi}search/movie?query=${name}&language=es-ES&page=1`, { headers: this.headers });
   }
 
-  getFilmById(id: number): Observable<DetailsFilm> {
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.bearer_token}`,
-      'Content-Type': 'application/json'
-    });
-
-    return this.http.get<DetailsFilm>(`${this.baseUrlApi}movie/${id}?language=es-ES`, { headers: headers })
+  getFilmById(id: string): Observable<DetailsFilm> {
+    return this.http.get<DetailsFilm>(`${this.baseUrlApi}movie/${id}?language=es-ES`, { headers: this.headers })
   }
 
 }

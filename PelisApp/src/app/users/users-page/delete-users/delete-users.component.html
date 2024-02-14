@@ -1,0 +1,11 @@
+<div class="container">
+  <h3 mat-dialog-title class="colorTxt">Borrar usuario</h3>
+
+  <p class="colorTxt"><strong>¡Atención! Se eliminará el usuario:</strong></p>
+  <p class="colorTxt"> {{usuario.usuario}} </p>
+
+  <div mat-dialog-actions style="float: right; margin-top: 20px;">
+      <button id="deleteUser" mat-raised-button type="submit" (click)="deleteUser()">Eliminar</button>
+      <button id="onNoClick" mat-raised-button (click)="onNoClick()" tabindex="-1">Cancelar</button>
+  </div>
+</div>

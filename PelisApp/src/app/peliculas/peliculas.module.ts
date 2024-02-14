@@ -12,6 +12,7 @@ import { DetailCardComponent } from './components/detail-card/detail-card.compon
 import { PeliPipe } from './pipes/pelicula-image.pipe';
 
 
+
 @NgModule({
   declarations: [
     LayoutPageComponent,
@@ -19,7 +20,8 @@ import { PeliPipe } from './pipes/pelicula-image.pipe';
     PeliculaPageComponent,
     CardComponent,
     DetailCardComponent,
-    PeliPipe
+    PeliPipe,
+
   ],
   imports: [
     CommonModule,

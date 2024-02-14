@@ -24,16 +24,20 @@ export class PeliculaPageComponent implements OnInit {
   }
 
   ngOnInit() : void {
-    this.activateRoute.params.pipe(switchMap(({id}) => this.peliculasService.getFilmById(id))).subscribe(
-      pelicula =>
-      {
-        if (!pelicula) return this.router.navigate(['./peliculas']);
 
-        this.datos = pelicula;
+    const id = this.activateRoute.snapshot.paramMap.get('id');
+
+    if (id !== null) {
+      this.peliculasService.getFilmById(id).subscribe(
+      (respuesta) => {
+        if (!respuesta) return this.router.navigate(['./peliculas']);
+
+        this.datos = respuesta;
 
         return;
-      }
-    )
+      });
+    }
   }
-
 }
+
+

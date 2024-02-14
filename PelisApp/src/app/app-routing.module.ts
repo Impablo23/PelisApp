@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Error404Component } from './shared/pages/error404/error404.component';
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'peliculas',
     loadChildren: () => import('./peliculas/peliculas.module').then(m => m.PeliculasModule)
+  },
+  {
+    path: 'users',
+    loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
   },
   {
     path: '404',

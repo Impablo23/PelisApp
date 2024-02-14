@@ -1,0 +1,22 @@
+
+<div class="col-12 mt-5 md:col-6 md:col-offset-3 md:mt-8" style="color: white;">
+  <form class="flex flex-column" [formGroup]="loginForm">
+    <span class="text-lg mb-4" style="text-align: center;font-weight: bold;font-variant: small-caps;">Inicia Sesión</span>
+
+    <mat-form-field>
+      <mat-label>Correo Electrónico</mat-label>
+      <input type="text" matInput placeholder="Correo Electrónico" formControlName="username">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Contraseña</mat-label>
+      <input type="password" matInput placeholder="Contraseña" formControlName="password">
+    </mat-form-field>
+
+    <button mat-button mat-flat-button style="background-color: red;" (click)="acceder()">
+      <mat-icon>input</mat-icon>
+      Iniciar Sesión
+    </button>
+
+  </form>
+</div>

@@ -4,6 +4,7 @@ import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { PeliculaPageComponent } from './pages/pelicula-page/pelicula-page.component';
 
+
 const routes: Routes = [
 
   {

@@ -1,0 +1,27 @@
+
+<div style="padding: 60px;color: white;" >
+  <h1 style="font-size: 40px; font-family: fantasy;letter-spacing: 2px;">Gestión de usuarios</h1>
+  <button mat-raised-button style="background-color: red; margin-right: 30px;" (click)="addUsuario()">Añadir un nuevo usuario<mat-icon>add</mat-icon></button>
+  <button mat-raised-button (click)="goToSearchPage()">Volver a la página principal</button>
+</div>
+<div style="margin-top: 50px; color: white;">
+  <table class="mat-elevation-z8" matSort>
+    <tr>
+      <th>ID USUARIO</th>
+      <th>USUARIO</th>
+      <th>NOMBRE PÚBLICO</th>
+      <th>ROL</th>
+    </tr>
+    <tr *ngFor="let usuario of listadoUsers">
+      <td>{{usuario.id_usuario}}</td>
+      <td>{{usuario.usuario}}</td>
+      <td>{{usuario.nombre_publico}}</td>
+      <td>{{usuario.rol}}</td>
+      <td>
+        <button mat-icon-button (click)="editUsuario(usuario)"><mat-icon>edit</mat-icon></button>
+        <button mat-icon-button (click)="deleteUsuario(usuario)"><mat-icon>delete</mat-icon></button>
+      </td>
+    </tr>
+  </table>
+</div>
+
