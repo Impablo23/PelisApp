@@ -41,7 +41,7 @@ export class SearchPageComponent {
     this.peliculasService.getFilmByName(busqueda).subscribe(
       (respuesta) => {
         this.peliculasService.listadoMovies = respuesta.results;
-        this.peliculas= this.peliculasService.listadoMovies
+        this.peliculas= this.peliculasService.listadoMovies.filter(result => result.poster_path !== null && result.poster_path !== '');
         console.log(this.peliculasService.listadoMovies)
         if(this.peliculasService.listadoMovies.length === 0) {
           this.snackbar.open("No se han encontrado resultados de "+busqueda, "Cerrar",{duration: 2000,panelClass:['background']})
