@@ -12,6 +12,7 @@ import { DetailCardComponent } from './components/detail-card/detail-card.compon
 import { PeliPipe } from './pipes/pelicula-image.pipe';
 import { ListPageComponent } from './pages/list-page/list-page.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { UsersPageComponent } from '../users/users-page/users-page.component';
 
 
 

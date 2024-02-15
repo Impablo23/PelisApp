@@ -64,8 +64,9 @@ export class LoginPageComponent {
         if (RESPONSENOUNDEFINED.data.token) {
           // this.cookieService.set('token', RESPONSE.data.token);
           // console.log('ya he puesto el token');
-          localStorage.setItem('id', RESPONSENOUNDEFINED.data.id);
+          localStorage.setItem('id_rol', RESPONSENOUNDEFINED.data.id_rol);
           localStorage.setItem('token', RESPONSENOUNDEFINED.data.token);
+          localStorage.setItem('id_usuario', RESPONSENOUNDEFINED.data.id_usuario);
           localStorage.setItem('usuario', RESPONSENOUNDEFINED.data.usuario);
           localStorage.setItem('nombre_publico', RESPONSENOUNDEFINED.data.nombre_publico);
           this.commonService.headers = new HttpHeaders({

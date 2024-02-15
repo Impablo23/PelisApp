@@ -1,6 +1,6 @@
-<mat-sidenav-container fullscreen style="background: linear-gradient(to bottom right, black, red)">
+<mat-sidenav-container fullscreen style="background: linear-gradient(to bottom right, black, red)" *ngIf="token">
 
-  <mat-sidenav #sidenav mode="push" [ngStyle]="{width: '350px'}" style="background: linear-gradient(to bottom right, red, black)">
+  <mat-sidenav #sidenav mode="push" [ngStyle]="{width: '400px'}" style="background: linear-gradient(to bottom right, red, black)">
     <mat-toolbar style="background-color: black; color: white;">
       <span>PelisApp</span>
       <span class="spacer"></span>
@@ -13,21 +13,40 @@
         <mat-icon matListItemIcon >{{iconos.icon}}</mat-icon>
         {{iconos.label}}
       </mat-list-item>
+      <div *ngIf="id_rol === '1' ">
+        <mat-list-item  *ngFor="let iconos of adminItems"  routerLink="{{iconos.url}}" (click)="sidenav.toggle()">
+          <mat-icon matListItemIcon >{{iconos.icon}}</mat-icon>
+          {{iconos.label}}
+        </mat-list-item>
+      </div>
+
 
     </mat-nav-list>
-    <mat-expansion-panel>
+    <mat-expansion-panel style="background: linear-gradient(to bottom right, black, red)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           Tus películas favoritas:
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <!-- Contenido del panel de expansión -->
-      <p>Contenido del panel de expansión aquí...</p>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let datos of listadoDatosPeliculasFavoritas" style="font-size: 10px;">
+            <td>{{ datos.title }} ({{ datos.release_date }})</td>
+            <td>
+              <button mat-icon-button><mat-icon>swipe_up</mat-icon></button>
+              <button mat-icon-button ><mat-icon>delete</mat-icon></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </mat-expansion-panel>
 
   </mat-sidenav>
-
-
 
   <mat-toolbar style="background-color: red;">
     <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
@@ -40,7 +59,6 @@
     <router-outlet></router-outlet>
   </div>
 
-
-
-
 </mat-sidenav-container>
+
+

@@ -24,9 +24,7 @@ export class PeliculaPageComponent implements OnInit {
   }
 
   ngOnInit() : void {
-
     const id = this.activateRoute.snapshot.paramMap.get('id');
-
     if (id !== null) {
       this.peliculasService.getFilmById(id).subscribe(
       (respuesta) => {

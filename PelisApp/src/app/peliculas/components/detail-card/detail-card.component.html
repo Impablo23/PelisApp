@@ -37,7 +37,7 @@
       <div class="movie__details" style="color: black;">
         <p>Popularidad: <span class="datos">{{datosPelicula.popularity}}</span></p>
         <p>Fecha de Estreno: <span class="datos">{{datosPelicula.release_date}}</span></p>
-        <button mat-icon-button color="warn">
+        <button mat-icon-button color="warn" (click)="confirmAdd(datosPelicula.id)">
           <mat-icon>favorite</mat-icon>
         </button>
         <button mat-raised-button color="warn" style="margin-left: 50px;width: 60%;background-color: red;" (click)="navigateToSearch()">Volver al listado<mat-icon>keyboard_double_arrow_right</mat-icon></button>

@@ -1,6 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { PeliculaFavorita } from './../../../interfaces/peliculaFavorita.interface';
+import { PeliculasFavoritasService } from './../../../services/peliculas-favoritas.service';
+import { Component, Inject, Input } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { DetailsFilm, Genre } from 'src/app/interfaces/detailsFilm';
+import { CLOSE } from 'src/app/shared/messages';
 
 @Component({
   selector: 'app-detail-card',
@@ -9,12 +15,21 @@ import { DetailsFilm, Genre } from 'src/app/interfaces/detailsFilm';
 })
 export class DetailCardComponent {
 
-  constructor(private router: Router){}
+  constructor(
+    private router: Router,
+    private peliService: PeliculasFavoritasService,
+    public snackBar: MatSnackBar
+  ){}
 
   @Input()
   public datosPelicula!: DetailsFilm;
   public generos! : Genre;
   public informacion : string = '';
+  public idUserNow : string | null = localStorage.getItem('id_usuario');
+  // public idPelicula : number | null = this.datosPelicula.id
+  detallesPeliculaFavoritaForm!: FormGroup;
+
+
 
   ngOnInit(): void {
 
@@ -50,5 +65,35 @@ export class DetailCardComponent {
     return this.datosPelicula.backdrop_path;
 
   }
+
+  async confirmAdd( id : number | null) {
+    const peliculaFavorita : PeliculaFavorita = {
+      id_pelicula: id!,
+      id_usuario: parseInt(this.idUserNow!,10)
+    }
+    const RESP = await this.peliService.addPeliculaFavorita(peliculaFavorita).toPromise();
+      const RESPNOUNDEFINED = RESP!
+      if (RESPNOUNDEFINED.ok) {
+        this.snackBar.open(RESPNOUNDEFINED.message!, CLOSE, { duration: 5000 });
+      } else {
+        this.snackBar.open(RESPNOUNDEFINED.message!, CLOSE, { duration: 5000 });
+      }
+  }
+
+  async confirmDelete( id : number) {
+
+    const RESP = await this.peliService.deletePeliculaFavorita(id).toPromise();
+      const RESPNOUNDEFINED = RESP!
+      if (RESPNOUNDEFINED.ok) {
+        this.snackBar.open(RESPNOUNDEFINED.message!, CLOSE, { duration: 5000 });
+      } else {
+        this.snackBar.open(RESPNOUNDEFINED.message!, CLOSE, { duration: 5000 });
+      }
+  }
+
+
+
+
+
 
 }

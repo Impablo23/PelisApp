@@ -1,7 +1,7 @@
-import { ActivatedRouteSnapshot, CanActivateFn, CanMatchFn, Route, Router, RouterStateSnapshot, UrlSegment } from "@angular/router";
-import { Observable, tap } from "rxjs";
-import { AuthService } from '../services/auth.service';
 import { inject } from "@angular/core";
+import { ActivatedRouteSnapshot, CanActivateFn, CanMatchFn, Route, Router, RouterStateSnapshot, UrlSegment } from "@angular/router";
+import { Observable, map, tap } from "rxjs";
+import { AuthService } from "../services/auth.service";
 
 const checkAuthStatus = ():Observable<boolean> => {
   const authService: AuthService = inject(AuthService);
@@ -9,18 +9,19 @@ const checkAuthStatus = ():Observable<boolean> => {
 
   return authService.checkAuthentication()
     .pipe(
-      tap( isAutheticated => console.log('Authenticated:', isAutheticated)),
+      tap( isAutheticated => console.log('AuthenticatedPublic:', isAutheticated)),
       tap(
         isAutheticated => {
-          if (!isAutheticated){
-            router.navigate(['auth/login'])
+          if (isAutheticated){
+            router.navigate(['movies/list'])
           }
         }
-      )
+      ),
+      map(isAuthenticated => !isAuthenticated) // Return the opposite of what we got back
     )
 }
 
-export const canMatchGuard: CanMatchFn = (
+export const cantMatchGuard: CanMatchFn = (
     route: Route,
     segments: UrlSegment[]
 ) => {
@@ -29,7 +30,7 @@ export const canMatchGuard: CanMatchFn = (
 
     return checkAuthStatus();
 }
-export const canActivateGuard: CanActivateFn = (
+export const cantActivateGuard: CanActivateFn = (
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ) => {
@@ -38,4 +39,3 @@ export const canActivateGuard: CanActivateFn = (
 
         return checkAuthStatus();
     }
-
