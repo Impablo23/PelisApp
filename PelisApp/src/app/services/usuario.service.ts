@@ -4,6 +4,7 @@ import { CommonService } from './common.service';
 import { Usuario } from '../interfaces/usuario.interface';
 import { ApiResponse } from '../interfaces/api-response.interface';
 import { environments } from '../environments/environments';
+import { Observable } from 'rxjs';
 
 
 const ENDPOINT = 'usuario';
@@ -17,13 +18,25 @@ const urlSGE : string = environments.baseUrl;
 export class UsuarioService {
 
   usuarios: Usuario[] = [];
-
+  usuario?: Usuario;
 
   constructor(private http: HttpClient, private commonService: CommonService) {
   }
 
   getAllUsuarios() {
     return this.http.get<ApiResponse>(`${urlSGE}/${ENDPOINT}.php`, { headers: this.commonService.headers });
+  }
+
+  getIdUserByToken(token: string): Observable<Usuario> {
+    return this.http.get<Usuario>(`${urlSGE}/${ENDPOINT}.php?token=${token}`, { headers: this.commonService.headers });
+  }
+
+  get currentUser(): Usuario | undefined {
+
+    if (!this.usuario) return undefined;
+
+    return structuredClone(this.usuario);
+
   }
 
   addUsuario(usuario: Usuario) {

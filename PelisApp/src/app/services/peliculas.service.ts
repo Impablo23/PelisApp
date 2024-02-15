@@ -35,6 +35,10 @@ export class PeliculaService {
     return this.http.get<DetailsFilm>(`${this.baseUrlApi}movie/${id}?language=es-ES`, { headers: this.headers })
   }
 
+  getPopularFilms(numPages: number): Observable<Root> {
+    return this.http.get<Root>(`${this.baseUrlApi}movie/popular?language=en-US&page=${numPages}`, { headers: this.headers })
+  }
+
 }
 
 

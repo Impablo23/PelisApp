@@ -1,0 +1,10 @@
+<h1 style="text-align: center; margin-top: 30px; font-size: 50px;font-family: fantasy; margin-bottom: 40px;">Listado de películas</h1>
+<div class="grid mb-8">
+  <div *ngFor="let pelicula of peliculasPopulares" class="col-12 sm.col-4 md:col-3 xl:col-2" ><app-card [pelicula]="pelicula"></app-card></div>
+</div>
+
+<p style="text-align: center;margin-bottom: 30px; font-family: fantasy;font-size: 20px;">Página {{contador}} de 42470 </p>
+<button mat-raised-button style="background-color: red; width: 30%;height: 50px;margin-bottom: 60px;margin-left: 30px;" (click)="anteriorPagina()" *ngIf="contador>1">Anterior Página</button>
+<span class="spacer"></span>
+<button mat-raised-button type="reset" style="background-color: red; width: 30%;height: 50px;margin-bottom: 160px;float: right;margin-right: 30px;" (click)="siguientePagina()" *ngIf="contador<=42470">Siguiente Página</button>
+

@@ -20,6 +20,7 @@ export class LoginPageComponent {
   alerta!: string;
   showSpinner!: boolean;
   error!: string;
+  emailCorrecto!: boolean;
 
 
   constructor(
@@ -41,6 +42,15 @@ export class LoginPageComponent {
     });
   }
 
+
+  // Metodo para que escriba el usuario y luego apareza el campo de contraseña y el de iniciar sesión
+  nextStep() {
+    if (this.loginForm.get('username')?.valid){
+      this.emailCorrecto = true;
+    }
+  }
+
+
   async acceder() {
 
     if (this.loginForm.valid) {
@@ -54,11 +64,10 @@ export class LoginPageComponent {
         if (RESPONSENOUNDEFINED.data.token) {
           // this.cookieService.set('token', RESPONSE.data.token);
           // console.log('ya he puesto el token');
+          localStorage.setItem('id', RESPONSENOUNDEFINED.data.id);
           localStorage.setItem('token', RESPONSENOUNDEFINED.data.token);
           localStorage.setItem('usuario', RESPONSENOUNDEFINED.data.usuario);
           localStorage.setItem('nombre_publico', RESPONSENOUNDEFINED.data.nombre_publico);
-          localStorage.setItem('ultimaOpcion', RESPONSENOUNDEFINED.data.opcion);
-          localStorage.setItem('ultimoGrupo', RESPONSENOUNDEFINED.data.grupo);
           this.commonService.headers = new HttpHeaders({
             'Content-Type': 'application/json',
             Authorization: `Bearer ${RESPONSENOUNDEFINED.data.token}`

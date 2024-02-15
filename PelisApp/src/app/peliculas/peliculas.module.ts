@@ -10,6 +10,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CardComponent } from './components/card/card.component';
 import { DetailCardComponent } from './components/detail-card/detail-card.component';
 import { PeliPipe } from './pipes/pelicula-image.pipe';
+import { ListPageComponent } from './pages/list-page/list-page.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+
 
 
 
@@ -21,13 +24,16 @@ import { PeliPipe } from './pipes/pelicula-image.pipe';
     CardComponent,
     DetailCardComponent,
     PeliPipe,
+    ListPageComponent,
+
 
   ],
   imports: [
     CommonModule,
     PeliculasRoutingModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatExpansionModule
   ]
 })
 export class PeliculasModule { }

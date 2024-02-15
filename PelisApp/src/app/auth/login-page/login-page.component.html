@@ -8,12 +8,16 @@
       <input type="text" matInput placeholder="Correo Electrónico" formControlName="username">
     </mat-form-field>
 
-    <mat-form-field>
+    <button mat-button mat-flat-button style="background-color: red;" (click)="nextStep()" *ngIf="!emailCorrecto">
+      Siguiente
+    </button>
+
+    <mat-form-field *ngIf="emailCorrecto">
       <mat-label>Contraseña</mat-label>
       <input type="password" matInput placeholder="Contraseña" formControlName="password">
     </mat-form-field>
 
-    <button mat-button mat-flat-button style="background-color: red;" (click)="acceder()">
+    <button mat-button mat-flat-button style="background-color: red;" (click)="acceder()" *ngIf="emailCorrecto">
       <mat-icon>input</mat-icon>
       Iniciar Sesión
     </button>

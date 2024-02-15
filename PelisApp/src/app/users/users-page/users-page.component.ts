@@ -12,6 +12,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-users-page',
@@ -46,7 +47,8 @@ export class UsersPageComponent {
               public dialog: MatDialog,
               private servicioUsuarios: UsuarioService,
               private overlay: Overlay,
-              private router: Router
+              private router: Router,
+              private authService: AuthService
               ) { }
 
   ngOnInit() {
@@ -110,6 +112,20 @@ export class UsersPageComponent {
   goToSearchPage() {
     this.router.navigate(['/peliculas']);
 
+  }
+
+
+
+  public sidebarItems = [
+    {label: 'Listado', icon: 'format_list_bulleted', url: '/peliculas/list'},
+    {label: 'Buscar', icon: 'search', url: '/peliculas/search'},
+    {label: 'Gestion de Usuarios', icon: 'groups', url: '/users'}
+  ]
+
+  salir() {
+    this.authService.doLogout()
+      .subscribe( () => {});
+      this.router.navigate(['auth']);
   }
 
 }

@@ -14,6 +14,7 @@ const urlSGE : string = environments.baseUrl;
 })
 export class AuthService {
 
+
   constructor(private http: HttpClient, private cookieService: CookieService, private commonService: CommonService) {}
 
   doLogin(data: any) {

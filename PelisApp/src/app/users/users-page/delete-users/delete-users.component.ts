@@ -16,24 +16,24 @@ export class DeleteUsersComponent {
     @Inject(MAT_DIALOG_DATA) public usuario: Usuario,
     private servicioUsuario: UsuarioService,
     private snackBar: MatSnackBar
-) { }
+  ) { }
 
-ngOnInit() {
-}
-
-async deleteUser() {
-  const RESP = await this.servicioUsuario.deleteUsuario(this.usuario).toPromise();
-  const RESPNOUNDEFINED = RESP!
-  if (RESPNOUNDEFINED.ok) {
-    this.snackBar.open(RESPNOUNDEFINED.message!, CLOSE, { duration: 5000 });
-    this.dialogRef.close({ok: RESPNOUNDEFINED.ok, data: RESPNOUNDEFINED.data});
-  } else {
-    this.snackBar.open(RESPNOUNDEFINED.message!, CLOSE, { duration: 5000 });
+  ngOnInit() {
   }
-}
 
-onNoClick() {
-this.dialogRef.close({ok: false});
-}
+  async deleteUser() {
+    const RESP = await this.servicioUsuario.deleteUsuario(this.usuario).toPromise();
+    const RESPNOUNDEFINED = RESP!
+    if (RESPNOUNDEFINED.ok) {
+      this.snackBar.open(RESPNOUNDEFINED.message!, CLOSE, { duration: 5000 });
+      this.dialogRef.close({ok: RESPNOUNDEFINED.ok, data: RESPNOUNDEFINED.data});
+    } else {
+      this.snackBar.open(RESPNOUNDEFINED.message!, CLOSE, { duration: 5000 });
+    }
+  }
+
+  onNoClick() {
+  this.dialogRef.close({ok: false});
+  }
 
 }

@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'peliculas',
-    loadChildren: () => import('./peliculas/peliculas.module').then(m => m.PeliculasModule)
+    loadChildren: () => import('./peliculas/peliculas.module').then(m => m.PeliculasModule),
   },
   {
     path: 'users',
@@ -23,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'peliculas',
+    redirectTo: 'auth',
     pathMatch: 'full'
   },
   {
