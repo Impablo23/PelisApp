@@ -17,7 +17,8 @@
     </div>
     <div class="movie_social" style="margin-top: 20px; margin-bottom: 20px;">
       <ul>
-        <li><i class="material-icons" (click)="confirmAdd(datosPelicula.id)"></i></li>
+        <li><i class="material-icons" *ngIf="isFavoriteListRoute()" style="color: red;" (click)="confirmAdd(datosPelicula.id)"><mat-icon>favorite</mat-icon></i></li>
+        <li><i class="material-icons" *ngIf="isListRoute(datosPelicula.id)" (click)="confirmAdd(datosPelicula.id)"><mat-icon>favorite</mat-icon></i></li>
         <li></li>
       </ul>
     </div>

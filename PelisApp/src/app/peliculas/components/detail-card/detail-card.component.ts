@@ -23,6 +23,7 @@ export class DetailCardComponent {
     public snackBar: MatSnackBar,
     private dialog: MatDialog,
     private overlay: Overlay,
+    private pelisFavService: PeliculasFavoritasService
   ){}
 
   @Input()
@@ -30,6 +31,9 @@ export class DetailCardComponent {
   public generos! : Genre;
   public informacion : string = '';
   public idUserNow : string | null = localStorage.getItem('id_usuario');
+
+  public listadoPeliculasFavoritas : PeliculaFavorita[] = [];
+
   // public idPelicula : number | null = this.datosPelicula.id
   detallesPeliculaFavoritaForm!: FormGroup;
 
@@ -114,6 +118,16 @@ export class DetailCardComponent {
       }
     }
   }
+
+  // async getPeliculasFavoritas() {
+  //   const RESPONSE = await this.pelisFavService.getAllPeliculasFavoritas(parseInt(this.idUserNow!,10)).toPromise();
+  //   const RESPNOUNDEFINED = RESPONSE!
+  //   if (RESPNOUNDEFINED.ok) {
+  //     this.listadoPeliculasFavoritas = RESPNOUNDEFINED.data as PeliculaFavorita[];
+  //     // console.log(this.listadoPeliculasFavoritas)
+  //     this.conseguirDatosPeliculas(this.listadoPeliculasFavoritas);
+  //   }
+  // }
 
 
 
