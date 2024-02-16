@@ -2,23 +2,27 @@ import { PeliculaFavorita } from './../../../interfaces/peliculaFavorita.interfa
 import { PeliculasFavoritasService } from './../../../services/peliculas-favoritas.service';
 import { Component, Inject, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { DetailsFilm, Genre } from 'src/app/interfaces/detailsFilm';
 import { CLOSE } from 'src/app/shared/messages';
+import { DialogComponent } from '../dialog/dialog.component';
+import { Overlay } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-detail-card',
   templateUrl: './detail-card.component.html',
-  styleUrls: ['./detail-card.component.css']
+  styleUrls: ['./detail-card.component.scss']
 })
 export class DetailCardComponent {
 
   constructor(
     private router: Router,
     private peliService: PeliculasFavoritasService,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private dialog: MatDialog,
+    private overlay: Overlay,
   ){}
 
   @Input()
@@ -43,7 +47,7 @@ export class DetailCardComponent {
   obtenerInfoPelicula(texto: string): string {
     const partes = texto.split('.');
     if (partes.length >= 2) {
-        this.informacion = partes[0] + ' ' + partes[1];
+        this.informacion = partes[0] + ' ' + partes[1] + ' ' + partes[2];
     } else {
         this.informacion = texto; // Si no hay dos partes, simplemente muestra el texto completo
     }
@@ -80,17 +84,36 @@ export class DetailCardComponent {
       }
   }
 
-  async confirmDelete( id : number) {
+  // async confirmDelete( id : number) {
 
-    const RESP = await this.peliService.deletePeliculaFavorita(id).toPromise();
-      const RESPNOUNDEFINED = RESP!
-      if (RESPNOUNDEFINED.ok) {
-        this.snackBar.open(RESPNOUNDEFINED.message!, CLOSE, { duration: 5000 });
-      } else {
-        this.snackBar.open(RESPNOUNDEFINED.message!, CLOSE, { duration: 5000 });
-      }
+  //   const RESP = await this.peliService.deletePeliculaFavorita(id).toPromise();
+  //     const RESPNOUNDEFINED = RESP!
+  //     if (RESPNOUNDEFINED.ok) {
+  //       this.snackBar.open(RESPNOUNDEFINED.message!, CLOSE, { duration: 5000 });
+  //     } else {
+  //       this.snackBar.open(RESPNOUNDEFINED.message!, CLOSE, { duration: 5000 });
+  //     }
+  // }
+
+  isListRoute(id: number): boolean {
+    return this.router.url.includes(`/peliculas/${id}`);
   }
 
+  isFavoriteListRoute(): boolean {
+    return this.router.url.includes('/peliculas/favourite-list');
+  }
+
+  async deletePeliculaFavorita(pelicula: DetailsFilm) {
+    const dialogRef = this.dialog.open(DialogComponent, { data:pelicula, scrollStrategy: this.overlay.scrollStrategies.noop() });
+    const RESULT = await dialogRef.afterClosed().toPromise();
+    if (RESULT) {
+      if (RESULT.ok) {
+        //this.unidadesDualService.deleteUnidadDual(RESULT.data);
+        //this.dataSource.data = this.unidadesDualService.unidadDual;
+
+      }
+    }
+  }
 
 
 

@@ -27,8 +27,8 @@ export class PeliculaService {
 
   constructor(private http: HttpClient) { }
 
-  getFilmByName(name: string): Observable<Root> {
-    return this.http.get<Root>(`${this.baseUrlApi}search/movie?query=${name}&language=es-ES&page=1`, { headers: this.headers });
+  getFilmByName(name: string,numPages: number): Observable<Root> {
+    return this.http.get<Root>(`${this.baseUrlApi}search/movie?query=${name}&language=es-ES&page=${numPages}`, { headers: this.headers });
   }
 
   getFilmById(id: string): Observable<DetailsFilm> {

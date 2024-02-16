@@ -5,6 +5,7 @@ import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { PeliculaPageComponent } from './pages/pelicula-page/pelicula-page.component';
 import { ListPageComponent } from './pages/list-page/list-page.component';
 import { UsersPageComponent } from '../users/users-page/users-page.component';
+import { FavouriteListPageComponent } from './pages/favourite-list-page/favourite-list-page.component';
 
 
 
@@ -17,6 +18,7 @@ const routes: Routes = [
     children: [
       {path: 'search', component: SearchPageComponent},
       {path: 'list', component: ListPageComponent},
+      {path: 'favourite-list', component: FavouriteListPageComponent},
       {path: ':id', component: PeliculaPageComponent},
       {path: '**', redirectTo: 'list'}
     ]

@@ -17,6 +17,8 @@ export class SearchPageComponent {
 
   public peliculas: Result[] = this.peliculasService.listadoMovies
 
+  contador : number = 1;
+
 
   constructor(private peliculasService: PeliculaService, private snackbar: MatSnackBar){}
 
@@ -31,14 +33,12 @@ export class SearchPageComponent {
 
     this.loadMovies();
 
-
-
   }
 
   private loadMovies() {
     const busqueda = this.searchForm.get('searchInput')!.value;
 
-    this.peliculasService.getFilmByName(busqueda).subscribe(
+    this.peliculasService.getFilmByName(busqueda,this.contador).subscribe(
       (respuesta) => {
         this.peliculasService.listadoMovies = respuesta.results;
         this.peliculas= this.peliculasService.listadoMovies.filter(result => result.poster_path !== null && result.poster_path !== '');
@@ -51,6 +51,16 @@ export class SearchPageComponent {
         console.error('Error en la solicitud HTTP:', error);
       }
       );
-}
+  }
+
+  siguientePagina() {
+    this.contador += 1;
+    this.loadMovies();
+  }
+
+  anteriorPagina() {
+    this.contador -= 1;
+    this.loadMovies();
+  }
 
 }

@@ -12,34 +12,31 @@ export class ListPageComponent implements OnInit {
   constructor(private peliculasService : PeliculaService){}
 
   ngOnInit(): void {
-    this.popularFilms();
-  }
-
-  ngOnSubmit(): void {
-    this.popularFilms();
+    this.popularFilms(this.contador);
   }
 
   contador: number = 1;
+  public peliculasPopulares: Result[] = [];
 
-  public peliculasPopulares: Result[] = this.peliculasService.listadoMovies;
-
-  popularFilms() {
-    this.peliculasService.getPopularFilms(this.contador).subscribe(
+  popularFilms(pageNumber: number) {
+    this.peliculasService.getPopularFilms(pageNumber).subscribe(
       (root) => {
-        this.peliculasService.listadoMovies = root.results;
-        this.peliculasPopulares= this.peliculasService.listadoMovies.filter(result => result.poster_path !== null && result.poster_path !== '');
+        this.peliculasPopulares = root.results.filter(result => result.poster_path !== null && result.poster_path !== '');
+        console.log(this.peliculasPopulares);
       }
     )
   }
 
   siguientePagina() {
     this.contador += 1;
-    this.popularFilms();
+    this.popularFilms(this.contador);
   }
 
   anteriorPagina() {
-    this.contador -= 1;
-    this.popularFilms();
+    if (this.contador > 1) {
+      this.contador -= 1;
+      this.popularFilms(this.contador);
+    }
   }
 
 }

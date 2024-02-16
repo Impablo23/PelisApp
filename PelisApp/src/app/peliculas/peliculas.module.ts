@@ -13,6 +13,8 @@ import { PeliPipe } from './pipes/pelicula-image.pipe';
 import { ListPageComponent } from './pages/list-page/list-page.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { UsersPageComponent } from '../users/users-page/users-page.component';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { FavouriteListPageComponent } from './pages/favourite-list-page/favourite-list-page.component';
 
 
 
@@ -26,6 +28,8 @@ import { UsersPageComponent } from '../users/users-page/users-page.component';
     DetailCardComponent,
     PeliPipe,
     ListPageComponent,
+    DialogComponent,
+    FavouriteListPageComponent,
 
 
   ],

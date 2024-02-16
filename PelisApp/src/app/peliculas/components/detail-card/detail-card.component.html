@@ -1,52 +1,26 @@
 
-<!-- <div class="grid">
-
-  <mat-card class="example-card" style="height: 600px; width: 60%; margin: auto; margin-top: 50px;">
-    <mat-card-header>
-      <mat-card-title-group>
-        <mat-card-title>{{datosPelicula.title}}</mat-card-title>
-        <mat-card-subtitle>{{datosPelicula.release_date}}</mat-card-subtitle>
-        <img mat-card-xl-image [src]="'https://image.tmdb.org/t/p/w500' + datosPelicula.poster_path" style="margin-right: 100px;margin-bottom: 100px;">
-      </mat-card-title-group>
-    </mat-card-header>
-    <mat-card-content style="margin-bottom: 50px;">
-      {{datosPelicula.overview}}
-    </mat-card-content>
-    <button mat-raised-button style="background: linear-gradient(to botton right, red, black); width: 20%;float: right;" (click)="navigateToSearch()">
-      <mat-icon>double_arrow</mat-icon>Volver al Inicio
-    </button>
-  </mat-card>
-
-</div> -->
-
-<div id="contenedor" style="background: url('https://image.tmdb.org/t/p/w500{{controlarErrorFondo(datosPelicula.backdrop_path)}}'); background-attachment: local; background-repeat: no-repeat; background-size: cover; position: relative;">
-
-  <figure class="movie" style="position: relative; z-index: 1; margin: auto; height: 530px; margin-top: 70px; border-radius: 40px;opacity: 1;">
-    <div class="movie__hero">
-      <img [src]="'https://image.tmdb.org/t/p/w500' + datosPelicula.poster_path" alt="{{datosPelicula.title}}" class="movie__img">
+<div class="movie_card" id="ave">
+  <div class="info_section">
+    <div class="movie_header">
+      <img class="locandina" [src]="'https://image.tmdb.org/t/p/w500' + datosPelicula.poster_path" alt="{{datosPelicula.title}}"/>
+      <h1>{{datosPelicula.title}}</h1>
+      <h4>Fecha de estreno: {{datosPelicula.release_date}}</h4>
+      <span class="minutes">Pouplaridad: {{datosPelicula.popularity}}</span>
+      <p class="type" *ngFor="let genero of datosPelicula.genres">{{genero.name}},</p>
     </div>
-    <div class="movie__content" style="overflow:hidden ;">
-      <div class="movie__title" style="margin-bottom: 20px;">
-        <h1 class="heading__primary" style="color: black;font-size: 20px">{{datosPelicula.title}}<i class="fas fa-fire"></i></h1>
-        <div class="movie__tag movie__tag--1" *ngFor="let genero of datosPelicula.genres">#{{genero.name}}</div>
-        <!-- <div class="movie__tag movie__tag--2">#thriller</div> -->
-      </div>
-      <p class="movie__description" style="color: black;font-size: 10px;">
+    <div class="movie_desc" style="margin-top: -40px;">
+      <p class="text">
         {{obtenerInfoPelicula(datosPelicula.overview)}}...
       </p>
-      <div class="movie__details" style="color: black;">
-        <p>Popularidad: <span class="datos">{{datosPelicula.popularity}}</span></p>
-        <p>Fecha de Estreno: <span class="datos">{{datosPelicula.release_date}}</span></p>
-        <button mat-icon-button color="warn" (click)="confirmAdd(datosPelicula.id)">
-          <mat-icon>favorite</mat-icon>
-        </button>
-        <button mat-raised-button color="warn" style="margin-left: 50px;width: 60%;background-color: red;" (click)="navigateToSearch()">Volver al listado<mat-icon>keyboard_double_arrow_right</mat-icon></button>
-      </div>
+      <button *ngIf="isListRoute(datosPelicula.id)" mat-raised-button color="warn" style="margin-top: 30px;;width: 60%;background-color: red;" (click)="navigateToSearch()">Volver al listado<mat-icon>keyboard_double_arrow_right</mat-icon></button>
+      <button *ngIf="isFavoriteListRoute()" mat-raised-button color="warn" style="margin-top: 30px;;width: 60%;background-color: red;" (click)="deletePeliculaFavorita(datosPelicula)">Eliminar de favoritos<mat-icon>delete</mat-icon></button>
     </div>
-  </figure>
-
+    <div class="movie_social" style="margin-top: 20px; margin-bottom: 20px;">
+      <ul>
+        <li><i class="material-icons" (click)="confirmAdd(datosPelicula.id)"></i></li>
+        <li></li>
+      </ul>
+    </div>
+  </div>
+  <div class="blur_back ave_back" style="background: url('https://image.tmdb.org/t/p/w500{{controlarErrorFondo(datosPelicula.backdrop_path)}}');background-size: 113%;"></div>
 </div>
-
-
-<!--
-style="background: url('https://image.tmdb.org/t/p/w500{{datosPelicula.backdrop_path}}');background-repeat: no-repeat;" -->

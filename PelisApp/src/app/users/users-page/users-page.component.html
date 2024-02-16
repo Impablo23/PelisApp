@@ -14,7 +14,9 @@
     </tr>
     <tr *ngFor="let usuario of listadoUsers">
       <td>{{usuario.id_usuario}}</td>
-      <td>{{usuario.usuario}}</td>
+      <td>
+        {{usuario.usuario}} <span *ngIf="id_usuario == usuario.id_usuario!" style="font-size: 18px;">(Usuario Actual)</span>
+      </td>
       <td>{{usuario.nombre_publico}}</td>
       <td>{{usuario.rol}}</td>
       <td>

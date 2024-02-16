@@ -28,6 +28,7 @@ export class UsersPageComponent {
   permises!: Permises;
 
   nombre_publico!: string;
+  id_usuario : string = localStorage.getItem('id_usuario')!;
 
   listadoUsers : Usuario[] = [];
 
@@ -112,20 +113,6 @@ export class UsersPageComponent {
   goToSearchPage() {
     this.router.navigate(['/peliculas']);
 
-  }
-
-
-
-  public sidebarItems = [
-    {label: 'Listado', icon: 'format_list_bulleted', url: '/peliculas/list'},
-    {label: 'Buscar', icon: 'search', url: '/peliculas/search'},
-    {label: 'Gestion de Usuarios', icon: 'groups', url: '/users'}
-  ]
-
-  salir() {
-    this.authService.doLogout()
-      .subscribe( () => {});
-      this.router.navigate(['auth']);
   }
 
 }

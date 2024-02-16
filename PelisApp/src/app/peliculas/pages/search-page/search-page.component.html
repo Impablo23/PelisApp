@@ -10,3 +10,11 @@
   </div>
 
 </div>
+
+<div *ngIf="peliculas && peliculas.length > 0">
+  <p style="text-align: center;margin-bottom: 30px; font-family: fantasy;font-size: 20px;">Página {{contador}}</p>
+  <button mat-raised-button style="background-color: red; width: 30%;height: 50px;margin-bottom: 60px;margin-left: 30px;" (click)="anteriorPagina()" *ngIf="contador>1">Anterior Página</button>
+  <span class="spacer"></span>
+  <button mat-raised-button type="reset" style="background-color: red; width: 30%;height: 50px;margin-bottom: 160px;float: right;margin-right: 30px;" (click)="siguientePagina()" *ngIf="contador<=42470">Siguiente Página</button>
+
+</div>

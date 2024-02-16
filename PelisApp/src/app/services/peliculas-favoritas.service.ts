@@ -38,9 +38,10 @@ export class PeliculasFavoritasService {
     return this.http.put<ApiResponse>(`${urlSGE}/${ENDPOINT}.php`, body, { headers: this.commonService.headers });
   }
 
-  deletePeliculaFavorita(id_pelicula_favorita: string | number) {
-    return this.http.delete<ApiResponse>(`${urlSGE}/${ENDPOINT}.php?id_pelicula_favorita=${id_pelicula_favorita}`, { headers: this.commonService.headers });
+  deletePeliculaFavorita(id_pelicula: number , id_usuario: number) {
+    return this.http.delete<ApiResponse>(`${urlSGE}/${ENDPOINT}.php?id_pelicula=${id_pelicula}&id_usuario=${id_usuario}`, { headers: this.commonService.headers });
   }
+
 
 
 }
