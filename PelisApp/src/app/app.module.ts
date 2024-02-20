@@ -9,11 +9,13 @@ import {HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { Error404Component } from './shared/pages/error404/error404.component';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +24,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     HttpClientModule,
     MaterialModule,
     ReactiveFormsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    SharedModule
 
   ],
   providers: [CookieService],

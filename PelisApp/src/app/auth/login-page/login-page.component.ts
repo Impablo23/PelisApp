@@ -44,9 +44,16 @@ export class LoginPageComponent {
 
 
   // Metodo para que escriba el usuario y luego apareza el campo de contraseña y el de iniciar sesión
+  // nextStep() {
+  //   if (this.loginForm.get('username')?.valid){
+  //     this.emailCorrecto = true;
+  //   }
+  // }
   nextStep() {
-    if (this.loginForm.get('username')?.valid){
-      this.emailCorrecto = true;
+    if (this.loginForm.get('username')?.valid) {
+      setTimeout(() => {
+        this.emailCorrecto = true;
+      }, 2000); // Retraso de 2 segundos (2000 milisegundos)
     }
   }
 
