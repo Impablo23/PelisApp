@@ -37,8 +37,6 @@ export class DetailCardComponent {
   // public idPelicula : number | null = this.datosPelicula.id
   detallesPeliculaFavoritaForm!: FormGroup;
 
-
-
   ngOnInit(): void {
 
   }
@@ -88,17 +86,6 @@ export class DetailCardComponent {
       }
   }
 
-  // async confirmDelete( id : number) {
-
-  //   const RESP = await this.peliService.deletePeliculaFavorita(id).toPromise();
-  //     const RESPNOUNDEFINED = RESP!
-  //     if (RESPNOUNDEFINED.ok) {
-  //       this.snackBar.open(RESPNOUNDEFINED.message!, CLOSE, { duration: 5000 });
-  //     } else {
-  //       this.snackBar.open(RESPNOUNDEFINED.message!, CLOSE, { duration: 5000 });
-  //     }
-  // }
-
   isListRoute(id: number): boolean {
     return this.router.url.includes(`/peliculas/${id}`);
   }
@@ -119,15 +106,6 @@ export class DetailCardComponent {
     }
   }
 
-  // async getPeliculasFavoritas() {
-  //   const RESPONSE = await this.pelisFavService.getAllPeliculasFavoritas(parseInt(this.idUserNow!,10)).toPromise();
-  //   const RESPNOUNDEFINED = RESPONSE!
-  //   if (RESPNOUNDEFINED.ok) {
-  //     this.listadoPeliculasFavoritas = RESPNOUNDEFINED.data as PeliculaFavorita[];
-  //     // console.log(this.listadoPeliculasFavoritas)
-  //     this.conseguirDatosPeliculas(this.listadoPeliculasFavoritas);
-  //   }
-  // }
 
 
 
