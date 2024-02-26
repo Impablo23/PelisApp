@@ -39,6 +39,7 @@ export class FavouriteListPageComponent {
 
   }
 
+  // Con este método obtenemos los datos de las películas favoritas de la base de datos y lo guardamos en un arry de PeliculaFavorita.
   async getPeliculasFavoritas() {
     const RESPONSE = await this.pelisFavService.getAllPeliculasFavoritas(parseInt(this.idUserNow!,10)).toPromise();
     const RESPNOUNDEFINED = RESPONSE!
@@ -49,6 +50,7 @@ export class FavouriteListPageComponent {
     }
   }
 
+  // Cone este método lo que hacemos es llamar a los datos de cada pelicula favorita mediante el servicio y los guardamos en un array de DetailsFilm
   async conseguirDatosPeliculas(listadoPeliculasFavoritas: PeliculaFavorita[]) {
 
     for (let i = 0; i < listadoPeliculasFavoritas.length; i++) {
