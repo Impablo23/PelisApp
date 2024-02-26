@@ -9,7 +9,6 @@ import { PeliculaPageComponent } from './pages/pelicula-page/pelicula-page.compo
 import { ReactiveFormsModule } from '@angular/forms';
 import { CardComponent } from './components/card/card.component';
 import { DetailCardComponent } from './components/detail-card/detail-card.component';
-import { PeliPipe } from './pipes/pelicula-image.pipe';
 import { ListPageComponent } from './pages/list-page/list-page.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { UsersPageComponent } from '../users/users-page/users-page.component';
@@ -26,7 +25,6 @@ import { FavouriteListPageComponent } from './pages/favourite-list-page/favourit
     PeliculaPageComponent,
     CardComponent,
     DetailCardComponent,
-    PeliPipe,
     ListPageComponent,
     DialogComponent,
     FavouriteListPageComponent,

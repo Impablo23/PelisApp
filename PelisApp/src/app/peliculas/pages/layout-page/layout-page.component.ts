@@ -75,6 +75,7 @@ export class LayoutPageComponent implements OnInit{
     if (RESPNOUNDEFINED.ok) {
       this.listadoPeliculasFavoritas = RESPNOUNDEFINED.data as PeliculaFavorita[];
       // console.log(this.listadoPeliculasFavoritas)
+
       this.conseguirDatosPeliculas(this.listadoPeliculasFavoritas);
     }
   }
@@ -101,8 +102,7 @@ export class LayoutPageComponent implements OnInit{
     const RESULT = await dialogRef.afterClosed().toPromise();
     if (RESULT) {
       if (RESULT.ok) {
-        //this.unidadesDualService.deleteUnidadDual(RESULT.data);
-        //this.dataSource.data = this.unidadesDualService.unidadDual;
+        this.listadoDatosPeliculasFavoritas = this.listadoDatosPeliculasFavoritas.filter(p => p !== pelicula);
 
       }
     }

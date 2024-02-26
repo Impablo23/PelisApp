@@ -12,9 +12,6 @@ const routes: Routes = [
     path: '',
     component: UsersPageComponent,
     children: [
-      {path: 'add', component: AddUsersComponent},
-      {path: 'edit/:id', component: EditUsersComponent},
-      {path: 'delete/:id', component: DeleteUsersComponent},
       {path: '**', redirectTo: 'users'}
     ]
   }

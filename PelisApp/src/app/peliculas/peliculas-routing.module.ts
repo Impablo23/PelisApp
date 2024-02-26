@@ -20,7 +20,7 @@ const routes: Routes = [
       {path: 'list', component: ListPageComponent},
       {path: 'favourite-list', component: FavouriteListPageComponent},
       {path: ':id', component: PeliculaPageComponent},
-      {path: '**', redirectTo: 'list'}
+      {path: '**', redirectTo: 'list'},
     ]
   }
 
